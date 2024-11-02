@@ -164,12 +164,9 @@ public:
             case '*': return left * right;
             case '/': return left / right;
             default: 
-            printf("Gowno kurwa switch\n");
             return 0;
             }
         }
-
-        printf("Gowno kurwa\n");
         return 0;
     }
 
