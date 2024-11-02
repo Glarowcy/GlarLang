@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.26)
+project(glarLang)
+
+set(CMAKE_CXX_STANDARD 20)
+
+file(GLOB_RECURSE SRCS CONFIGURE_DEPENDS src/*.cc src/*.hh)
+
+add_executable(glarLang ${SRCS})
+target_include_directories(glarLang PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(glarLang PRIVATE vendor/include)
+
+if(WIN32)
+    file(GLOB LLVM_LIBS CONFIGURE_DEPENDS vendor/lib/*.lib)
+    target_link_libraries(glarLang PRIVATE ${LLVM_LIBS})
+else()
+    find_package(LLVM REQUIRED)
+    target_link_libraries(glarLang PRIVATE LLVM)
+endif()

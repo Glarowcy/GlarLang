@@ -1,0 +1,6 @@
+let name: type;
+
+
+main() => void {
+    print("Hello World");
+}
